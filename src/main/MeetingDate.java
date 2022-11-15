@@ -14,30 +14,35 @@ public class MeetingDate {
     }
 
     public MeetingDate correctDate() {
-
+    return correctDate();
     }
 
     public int getDay() {
-
+return 0;
     }
 
     public int getMonthValue() {
+        return 0;
 
     }
 
     public String getMonthName() {
-
+String name = "adam" ;
+return name;
     }
 
     public int getYear() {
+        return 0;
 
     }
 
     public String toString() {
-
+        String name = "adam" ;
+        return name;
     }
 
     public boolean validateDate() {
-
+        boolean name = true;
+        return name;
     }
 }
