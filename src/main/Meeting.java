@@ -1,15 +1,39 @@
-import java.time.LocalDateTime;
-
 public class Meeting {
-    //private Room location;
-    private LocalDateTime time;
-    private float durationInHours;
-    private int maxAttendees;
 
-    public Meeting(LocalDateTime time, float duration, int maxAttendees) {
-        //this.location = location;
-        this.time = time;
-        durationInHours = duration;
-        this.maxAttendees = maxAttendees;
+    private String description;
+    private MeetingDate day;
+    private MeetingTime from;
+    private MeetingTime to;
+
+    public Meeting(String all){
+        String[] splitted = all.split(" ");
+      
+        this.description = splitted[0];
+        this.day = new MeetingDate(splitted[1]);
+        this.from = new MeetingTime(splitted[2]) ;
+        this.to = new MeetingTime(splitted[3]);
+    }
+
+    public MeetingDate getDay() {
+        return day;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public MeetingTime getFrom() {
+        return from;
+    }
+
+    public MeetingTime getTo() {
+        return to;
+    }
+
+    public String toString() {
+        
+        return getDescription().toString() + getDay().toString() + " "+ getFrom().toString() +" until "+ getTo().toString();
     }
 }
+
+
