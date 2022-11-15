@@ -14,6 +14,13 @@ public class MeetingDate {
         this.year = year;
     }
 
+    public MeetingDate(String line) {
+        String[] arr = line.split("/");
+        year = Integer.parseInt(arr[0]);
+        month = Integer.parseInt(arr[1]);
+        day = Integer.parseInt(arr[2]);
+    }
+
     public void correctDate() {
         LocalDate today = LocalDate.now();
         //past dates are changed to current date
