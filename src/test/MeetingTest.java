@@ -1,13 +1,11 @@
-
 import org.junit.jupiter.api.DisplayName;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.testng.AssertJUnit.*;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MeetingTest {
     public MeetingTest(){
@@ -38,7 +36,7 @@ public class MeetingTest {
     public void checkRoomRequirements(){
         ArrayList<String> requirements = new ArrayList<>();
         Room bestRoom = new Room("005", false,15);
-        Assert.assertEquals(Arrays.asList("Projector", "WhiteBoard", "WiFi", "Refreshments"), bestRoom.roomRequirements());
+        assertEquals(Arrays.asList("Projector", "WhiteBoard", "WiFi", "Refreshments"), bestRoom.roomRequirements());
     }
 
     // Adam - Test 4 very much work in progress commented out code in room.java aswell, not finished yet
