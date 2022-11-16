@@ -5,13 +5,19 @@ public class Meeting {
     private MeetingTime from;
     private MeetingTime to;
 
-    public Meeting(String all){
-        String[] splitted = all.split(" ");
-      
-        this.description = splitted[0];
-        this.day = new MeetingDate(splitted[1]);
-        this.from = new MeetingTime(splitted[2]) ;
-        this.to = new MeetingTime(splitted[3]);
+    public Meeting(String details){
+        String[] arr = details.split(" ");
+        this.description = arr[0];
+        this.day = new MeetingDate(arr[1]);
+        this.from = new MeetingTime(arr[2]) ;
+        this.to = new MeetingTime(arr[3]);
+    }
+
+    public Meeting(String description, MeetingDate day, MeetingTime from, MeetingTime to) {
+        this.description = description;
+        this.day = day;
+        this.from = from;
+        this.to = to;
     }
 
     public MeetingDate getDay() {
@@ -31,8 +37,7 @@ public class Meeting {
     }
 
     public String toString() {
-        
-        return getDescription().toString() + getDay().toString() + " "+ getFrom().toString() +" until "+ getTo().toString();
+        return String.format("%s on %s from %s until %s");
     }
 }
 

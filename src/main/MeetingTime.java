@@ -1,17 +1,20 @@
 public class MeetingTime
 { 
-   private String time;
+   private int hours;
+   private int minutes;
     
     public MeetingTime(String h){
-      this.time = h;
+      String[] arr = h.split(":");
+      hours = Integer.parseInt(arr[0]);
+      minutes = Integer.parseInt(arr[1]);
     }
 
+    public MeetingTime(int hours, int minutes) {
+        this.hours = hours;
+        this.minutes = minutes;
+    }
     
     public String toString() {
-        
-        return time;
+        return String.format("%02d:%02d", hours, minutes);
     }
-
-    
-   
 }
