@@ -7,7 +7,7 @@ public class MeetingInterface {
     Scanner in = new Scanner(System.in);
 
 
-    public void createMeeting{
+    public void createMeeting(){
         System.out.println("Enter what the meeting is about");
         String desc = in.nextLine();
 
