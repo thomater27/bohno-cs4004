@@ -1,17 +1,55 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class Room {
-    private String id;
+    private final String id;
     private boolean occupied;
-    private int seats;
-    private ArrayList requirements = new ArrayList<>();
+    private int capacity;
+    private ArrayList<String> resources = new ArrayList<>();
+    private ArrayList<Meeting> meetings = new ArrayList<>();
 
-    public Room(String id, boolean occupied, int seats) {
+    public Room(String id, int seats) {
         this.id = id;
-        this.occupied = occupied;
-        this.seats = seats;
+        this.capacity = seats;
+    }
+
+    public void addResource(String r) {
+        resources.add(r.toLowerCase());
+    }
+
+    public void removeResource(String r) {
+        resources.remove(r);
+    }
+
+    public boolean hasResource(String r) {
+        r = r.toLowerCase();
+        return resources.contains(r);
+    }
+
+    public void addMeeting(Meeting m) {
+        meetings.add(m);
+    }
+
+    public boolean removeMeeting(Meeting m) {
+        return meetings.remove(m);
+    }
+
+    public boolean isAvailableAtTime(MeetingDate date, MeetingTime start, MeetingTime end) {
+        Meeting meeting = new Meeting("sample", date, start, end, this);
+        for (Meeting m : meetings) {
+            if (m.getDay().equals(date)) {
+                return !meeting.isDuring(m);
+            }
+        }
+        return true;
+    }
+
+    public String toString() {
+        return String.format("Room %02d");
+    }
+    /*
+    public boolean hasCapacity(int numberOfPeople) {
+        return capacity >= numberOfPeople;
     }
 
     public boolean checkIfRoomsFree() {
@@ -25,14 +63,13 @@ public class Room {
     }
 
     public ArrayList roomRequirements(){
-        requirements.add("Projector");
-        requirements.add("WhiteBoard");
-        requirements.add("WiFi");
-        requirements.add("Refreshments");
-        return requirements;
+        resources.add("Projector");
+        resources.add("WhiteBoard");
+        resources.add("WiFi");
+        resources.add("Refreshments");
+        return resources;
     }
 
-    /*
     public ArrayList wheelchairAccessibleRoomRequirements(){
         wheelchairAccessibleRoomRequirements().add("stairs");
         return null;
@@ -47,6 +84,5 @@ public class Room {
     public boolean String.contains(CharSequence s){
         return ok;
     }
-
      */
 }
