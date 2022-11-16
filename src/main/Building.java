@@ -37,7 +37,7 @@ public class Building {
     }
 
     public Room getRoomWithId(int nextInt) {
-       return getAvailableRooms(get(nextInt));
+       return availableRooms.get(nextInt);
     }
 
 
