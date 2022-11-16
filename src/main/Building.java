@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import static javax.swing.UIManager.get;
+
 public class Building {
     int roomsOnEachFloor ;
     int floors;
@@ -33,4 +35,10 @@ public class Building {
         }
         return sb;
     }
+
+    public Room getRoomWithId(int nextInt) {
+       return getAvailableRooms(get(nextInt));
+    }
+
+
 }

@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class MeetingInterface {
     private Building csis = new Building(12, 3);
-
+    private Participants p;
     Scanner in = new Scanner(System.in);
 
 
@@ -29,37 +29,33 @@ public class MeetingInterface {
 
 
         System.out.println("Select the participants you want");
-        public StringBuilder participants() {
-            int count = 1;
-            StringBuilder sb = new StringBuilder();
-            for(Participants f : p.getAllParticipants()) { //TODO: this method in participants
-                sb.append(count + " ");
-                sb.append(f);
-                sb.append("\n");
-                count++;
-            }
-            System.out.println(sb);
+
+
+        int count = 1;
+        StringBuilder sb = new StringBuilder();
+        for (Participants f : p.getAllP()) {
+            sb.append(count + " ");
+            sb.append(f);
+            sb.append("\n");
+            count++;
         }
+        System.out.println(sb);
 
 
-    ArrayList<Participants> participants = new ArrayList<>();
+        ArrayList<Participants> participants = new ArrayList<>();
 
         for (Participants f : participants) {
-            for(Meeting m : f.getExclusionset) { //TODO: this method in participants
+            for (Meeting m : f.getExclusionSet()) {
                 if (description != m) {
                     System.out.println("Email sent to participants to accept meeting");
-                    if(f.acceptOrDecline()){ //TODO: this method in participants
-                        System.out.println("Participant accepts meeting");
-                    }else{
-                        System.out.println("Participant declined meeting");
-                    }
-                }else {
+                } else {
                     System.out.println("Some participants cannot attend");
 
 
+                }
+
+
             }
-
-
         }
     }
 }
