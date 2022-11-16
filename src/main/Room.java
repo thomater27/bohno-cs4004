@@ -44,6 +44,7 @@ public class Room {
         return true;
     }
 
+    @Override
     public String toString() {
         return String.format("Room %02d");
     }

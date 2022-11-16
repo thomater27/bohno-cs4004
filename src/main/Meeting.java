@@ -48,7 +48,7 @@ public class Meeting {
     }
 
     public String toString() {
-        return String.format("%s on %s from %s until %s");
+        return String.format("%s on %s from %s until %s", description, day, from, to);
     }
 }
 
