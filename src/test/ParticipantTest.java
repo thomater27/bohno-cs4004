@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 class ParticipantTest {
-    Participant pete = new Participant( "pete" );
+    //Participant pete = new Participant( "pete" );
     @Test
     void getExceptions() {
 

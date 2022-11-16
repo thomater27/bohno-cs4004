@@ -1,9 +1,9 @@
 public class Meeting {
 
-    private String description;
-    private MeetingDate date;
-    private MeetingTime from;
-    private MeetingTime to;
+    private final String description;
+    private final MeetingDate date;
+    private final MeetingTime from;
+    private final MeetingTime to;
     private Room room;
 
     public Meeting(String details){
@@ -48,7 +48,7 @@ public class Meeting {
     }
 
     public String toString() {
-        return String.format("%s on %s from %s until %s", description, date, from, to);
+        return String.format("%s on %s from %s until %s in %s", description, date, from, to, room);
     }
 }
 

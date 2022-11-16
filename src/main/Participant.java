@@ -3,10 +3,9 @@ import java.util.ArrayList;
 public class Participant {
     private ArrayList<Participant> allP = new ArrayList<>();
     private ArrayList<Meeting> exclusionSet = new ArrayList<>();
-    private Meeting exceptions ;
-    private String name;
-    private String password;
-    private boolean priveleged = false;
+    private final String name;
+    private final String password;
+    private boolean privileged = false;
 
     public Participant(String name, String password) {
         this.name = name;
@@ -15,15 +14,11 @@ public class Participant {
 
     public Participant(String name, String password, boolean privileged) {
         this(name, password);
-        this.priveleged = privileged;
+        this.privileged = privileged;
     }
 
     public ArrayList<Participant> getAllP() {
         return allP;
-    }
-
-    public Meeting getExceptions() {
-        return exceptions;
     }
 
     public ArrayList<Meeting> getExclusionSet() {
@@ -42,8 +37,8 @@ public class Participant {
         return this.name.equals(name) && this.password.equals(password);
     }
 
-    public boolean isPriveleged() {
-        return priveleged;
+    public boolean isPrivileged() {
+        return privileged;
     }
 
     public void addMeeting(Meeting m) {

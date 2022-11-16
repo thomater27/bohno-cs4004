@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Room {
     private final int id;
-    private boolean occupied;
     private int capacity;
     private ArrayList<String> resources = new ArrayList<>();
     private ArrayList<Meeting> meetings = new ArrayList<>();
@@ -11,6 +10,10 @@ public class Room {
     public Room(int id, int seats) {
         this.id = id;
         this.capacity = seats;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public void addResource(String r) {

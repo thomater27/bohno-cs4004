@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class MeetingInterface {
     private Building csis = new Building(12, 3);
-    private Participant p;
     private Scanner in = new Scanner(System.in);
     private ArrayList<Participant> participants = new ArrayList<>();
     private ArrayList<Meeting> meetings = new ArrayList<>();
@@ -49,7 +48,7 @@ public class MeetingInterface {
     private void userMenu(Participant p) {
         boolean running = true;
         while (running) {
-            if (p.isPriveleged()) {
+            if (p.isPrivileged()) {
                 System.out.println("C)reate meeting, D)elete meeting, R)emove meeting, V)iew meetings, M)anage rooms, L)og out");
                 String input = in.next().toLowerCase();
                 if (input.equals("c") || input.equals("d") || input.equals("r") || input.equals("v") || input.equals("m") || input.equals("l")) {
@@ -107,7 +106,7 @@ public class MeetingInterface {
         System.out.println("Enter the time you want to finish :");
         MeetingTime to = new MeetingTime(in.nextInt());
 
-        Room r = null;
+        Room r;
         System.out.println(csis.getAvailableRoomAtTime(date, start, to));
         while (true) {
             System.out.println("Enter the id of the room you want");
