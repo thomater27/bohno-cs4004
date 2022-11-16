@@ -8,7 +8,6 @@ public class Participants {
     private int password ;
 
     public Participants(String name){ //participant
-        this.exceptions = new Meeting(cantWork);
         exclusionSet.add(exceptions);
         this.name = name;
     }
