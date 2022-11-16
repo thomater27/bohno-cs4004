@@ -1,11 +1,12 @@
 
 import org.junit.jupiter.api.DisplayName;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 
 public class MeetingTest {
@@ -15,9 +16,9 @@ public class MeetingTest {
     @Test
     @DisplayName("Test 1 : Check if the room is free")
     public void checkRoomStatus() {
-        ArrayList<Requirements> equipment = new ArrayList<>();
-        Room adamsRoom = new Room("001", false, 2, equipment);
-        Room thomasRoom = new Room("002", true, 4, equipment);
+        ArrayList<String> equipment = new ArrayList<>();
+        Room adamsRoom = new Room("001", false, 2);
+        Room thomasRoom = new Room("002", true, 4);
         assertTrue(thomasRoom.checkIfRoomsFree());
     }
 
@@ -25,9 +26,25 @@ public class MeetingTest {
     @Test
     @DisplayName("Test 2 : Check if a room has more than 10 seats")
     public void checkRoomSeatNumber(){
-        ArrayList<Requirements> equipment = new ArrayList<>();
-        Room johnsRoom = new Room("003", true, 7, equipment);
-        Room bayansRoom = new Room("004", false, 12, equipment);
+        ArrayList<String> equipment = new ArrayList<>();
+        Room johnsRoom = new Room("003", true, 7);
+        Room bayansRoom = new Room("004", false, 12);
         assertFalse(bayansRoom.checkIfRoomHasMoreThan10Seats());
+    }
+
+    //Adam - Test 3
+    @Test
+    @DisplayName("Test 3 : Check if a room contains basic requirements")
+    public void checkRoomRequirements(){
+        ArrayList<String> requirements = new ArrayList<>();
+        Room bestRoom = new Room("005", false,15);
+        Assert.assertEquals(Arrays.asList("Projector", "WhiteBoard", "WiFi", "Refreshments"), bestRoom.roomRequirements());
+    }
+
+    // Adam - Test 4 very much work in progress commented out code in room.java aswell, not finished yet
+    @Test
+    @DisplayName("Test 4: Check if the room is wheelchair accessible")
+    public void checkWheelchairAccessibility(){
+        Room wheelchairAccessibleRoom = new Room("006", true, 6);
     }
 }
