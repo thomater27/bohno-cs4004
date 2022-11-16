@@ -1,9 +1,7 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class ParticipantsTest {
-    Participants pete = new Participants( "pete" );
+class ParticipantTest {
+    Participant pete = new Participant( "pete" );
     @Test
     void getExceptions() {
 

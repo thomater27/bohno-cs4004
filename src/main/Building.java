@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import static javax.swing.UIManager.get;
-
 public class Building {
     int roomsOnEachFloor ;
     int floors;
@@ -13,32 +11,29 @@ public class Building {
         amountOfRooms = floors * roomsOnEachFloor;
     }
     ArrayList<Room> allRooms = new ArrayList<>();
-    ArrayList<Room> availableRooms = new ArrayList<>();
+    //ArrayList<Room> availableRooms = new ArrayList<>();
 
 
     public ArrayList<Room> getAllRooms() {
         return allRooms;
     }
 
-    public ArrayList<Room> getAvailableRooms() {
-        return availableRooms;
-    }
-
-    public StringBuilder availableRooms() {
-        int count = 1;
-        StringBuilder sb = new StringBuilder();
-        for(Room f : getAvailableRooms()) {
-            sb.append(count + " ");
-            sb.append(f);
-            sb.append("\n");
-            count++;
+    public Room getRoomWithId(int id) {
+        for (Room r : allRooms) {
+            if (r.getId() == id) {
+                return r;
+            }
         }
-        return sb;
+        return null;
     }
 
-    public Room getRoomWithId(int nextInt) {
-       return availableRooms.get(nextInt);
+    public ArrayList<Room> getAvailableRoomAtTime(MeetingDate date, MeetingTime start, MeetingTime end) {
+        ArrayList<Room> available = new ArrayList<>();
+        for (Room r : allRooms) {
+            if (r.isAvailableAtTime(date, start, end)) {
+                available.add(r);
+            }
+        }
+        return available;
     }
-
-
 }

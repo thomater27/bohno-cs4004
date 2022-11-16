@@ -1,7 +1,7 @@
 public class Meeting {
 
     private String description;
-    private MeetingDate day;
+    private MeetingDate date;
     private MeetingTime from;
     private MeetingTime to;
     private Room room;
@@ -9,14 +9,14 @@ public class Meeting {
     public Meeting(String details){
         String[] arr = details.split(" ");
         this.description = arr[0];
-        this.day = new MeetingDate(arr[1]);
+        this.date = new MeetingDate(arr[1]);
         this.from = new MeetingTime(arr[2]) ;
         this.to = new MeetingTime(arr[3]);
     }
 
     public Meeting(String description, MeetingDate day, MeetingTime from, MeetingTime to, Room room) {
         this.description = description;
-        this.day = day;
+        this.date = day;
         this.from = from;
         this.to = to;
         this.room = room;
@@ -31,8 +31,8 @@ public class Meeting {
         return from1 <= to2 && to1 >= from2;
     }
 
-    public MeetingDate getDay() {
-        return day;
+    public MeetingDate getDate() {
+        return date;
     }
     
     public String getDescription() {
@@ -48,7 +48,7 @@ public class Meeting {
     }
 
     public String toString() {
-        return String.format("%s on %s from %s until %s", description, day, from, to);
+        return String.format("%s on %s from %s until %s", description, date, from, to);
     }
 }
 
