@@ -9,6 +9,9 @@ public class Building {
         this.roomsOnEachFloor = roomsOnEachFloor;
         this.floors = floors;
         amountOfRooms = floors * roomsOnEachFloor;
+        for (int i = 0; i < amountOfRooms; i++) {
+            allRooms.add(new Room(i+1, (int)(Math.random()*20+20)));
+        }
     }
     ArrayList<Room> allRooms = new ArrayList<>();
     //ArrayList<Room> availableRooms = new ArrayList<>();

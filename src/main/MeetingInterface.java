@@ -8,6 +8,8 @@ public class MeetingInterface {
     private ArrayList<Meeting> meetings = new ArrayList<>();
 
     public void run() {
+        participants.add(new Participant("John", "123", true));
+        participants.add(new Participant("Bob", "aBc"));
         boolean running = true;
         while (running) {
             System.out.println("Input 1 for user login");
@@ -29,14 +31,18 @@ public class MeetingInterface {
             String username = in.next();
             System.out.println("Please enter your password");
             String password = in.next();
+            boolean valid = false;
             for (Participant p : participants) {
                 if (p.checkLogin(username, password)) {
                     userMenu(p);
+                    valid = true;
                     break;
                 }
             }
-            System.out.println("Invalid username or password");
-            System.out.println("Input 1 to try again");
+            if (!valid) {
+                System.out.println("Invalid username or password");
+            }
+            System.out.println("Input 1 to log in again");
             System.out.println("Input 2 to exit to previous menu");
             int input = in.nextInt();
             if (input == 2) {
@@ -44,6 +50,7 @@ public class MeetingInterface {
             }
         }
     }
+
 
     private void userMenu(Participant p) {
         boolean running = true;
@@ -75,11 +82,11 @@ public class MeetingInterface {
                 return true;
 
             case "r":
-
+                removeMeeting(p);
                 return true;
 
             case "v":
-
+                viewMeetings(p);
                 return true;
 
             case "m":
@@ -95,10 +102,10 @@ public class MeetingInterface {
 
     private void createMeeting(Participant p) {
         System.out.println("Enter what the meeting is about");
-        String desc = in.nextLine();
+        String desc = in.next();
 
         System.out.println("Enter the date you want to create the meeting for");
-        MeetingDate date = new MeetingDate(in.nextLine());
+        MeetingDate date = new MeetingDate(in.next());
 
         System.out.println("Enter the time you want to start at :");
         MeetingTime start = new MeetingTime(in.nextInt());
@@ -133,21 +140,26 @@ public class MeetingInterface {
         ArrayList<Participant> selected = new ArrayList<>();
 
         while (true) {
-            int input = in.nextInt();
-            if (input == 0) {
-                break;
+            int inputValue = in.nextInt();
+            if (inputValue != 0) {
+                selected.add(participants.get(inputValue - 1));
+                System.out.println(participants.get(inputValue - 1));
             } else {
-                selected.add(participants.get(input - 1));
+                break;
             }
         }
 
         boolean success = true;
         for (Participant f : selected) {
-            for (Meeting m : f.getExclusionSet()) {
-                if (meeting.isDuring(m)) {
-                    success = false;
-                } else {
-                    f.addMeeting(meeting);
+            if (f.getExclusionSet().isEmpty()) {
+                f.addMeeting(meeting);
+            } else {
+                for (Meeting m : f.getExclusionSet()) {
+                    if (meeting.isDuring(m)) {
+                        success = false;
+                    } else {
+                        f.addMeeting(meeting);
+                    }
                 }
             }
         }
@@ -155,6 +167,23 @@ public class MeetingInterface {
             System.out.println("Email sent to participants to accept meeting");
         } else {
             System.out.println("Email sent to available participants, some cannot attend");
+        }
+    }
+
+    public void removeMeeting(Participant p) {
+        viewMeetings(p);
+        System.out.println("Please input the name of the meeting to be removed");
+        String input = in.next();
+        if (p.removeMeeting(input)) {
+            System.out.println("Meeting removed successfully");
+        } else {
+            System.out.println("No meeting found by that name");
+        }
+    }
+
+    public void viewMeetings(Participant p) {
+        for (Meeting m : p.getExclusionSet()) {
+            System.out.println(m);
         }
     }
 }

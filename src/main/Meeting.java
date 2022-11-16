@@ -23,12 +23,15 @@ public class Meeting {
     }
 
     public boolean isDuring(Meeting m) {
-        int from1 = from.getHours();
-        int to1 = to.getHours();
-        int from2 = m.getFrom().getHours();
-        int to2 = m.getTo().getHours();
+        if (date.equals(m.getDate())) {
+            int from1 = from.getHours();
+            int to1 = to.getHours();
+            int from2 = m.getFrom().getHours();
+            int to2 = m.getTo().getHours();
 
-        return from1 <= to2 && to1 >= from2;
+            return from1 <= to2 && to1 >= from2;
+        }
+        return false;
     }
 
     public MeetingDate getDate() {

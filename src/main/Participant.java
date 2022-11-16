@@ -34,7 +34,7 @@ public class Participant {
     }
 
     public boolean checkLogin(String name, String password) {
-        return this.name.equals(name) && this.password.equals(password);
+        return this.name.equalsIgnoreCase(name) && this.password.equals(password);
     }
 
     public boolean isPrivileged() {
@@ -43,5 +43,16 @@ public class Participant {
 
     public void addMeeting(Meeting m) {
         exclusionSet.add(m);
+    }
+
+    public boolean removeMeeting(String name) {
+        int size = exclusionSet.size();
+        for (int i = 0; i < size; i++) {
+            if (exclusionSet.get(i).getDescription().equalsIgnoreCase(name)) {
+                 exclusionSet.remove(i);
+                 return true;
+            }
+        }
+        return false;
     }
 }
