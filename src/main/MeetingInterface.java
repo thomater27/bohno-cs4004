@@ -8,15 +8,23 @@ public class MeetingInterface {
 
 
     public void createMeeting{
+        System.out.println("Enter what the meeting is about");
+        String desc = in.nextLine();
+
         System.out.println("Enter the date you want to creat a meeting");
-        String date = in.nextLine();
+        MeetingDate date = new MeetingDate(in.nextLine());
+
         System.out.println("Enter the time you want to start at :");
-        int from = in.nextInt();
+        MeetingTime start = new MeetingTime(in.nextInt());
+
         System.out.println("Enter the time you want to finish :");
-        int to = in.nextInt();
+        MeetingTime to = new MeetingTime(in.nextInt());
+
         System.out.println(csis.availableRooms);
         System.out.println("Enter the location you want");
         int selection = in.nextInt();
+
+        Meeting BLEH = new Meeting(desc , date, start, to, selection);
 
     }
 
