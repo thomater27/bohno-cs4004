@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
 public class Building {
+    public Building(Rooms )
+    {
 
+    }
     ArrayList<Room> allRooms = new ArrayList<>();
     ArrayList<Room> availableRooms = new ArrayList<>();
 
