@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MeetingInterface {
-    private Building csis = new Building();
+    private Building csis = new Building(12,3);
 
     Scanner in = new Scanner(System.in);
 
