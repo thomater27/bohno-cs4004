@@ -21,10 +21,10 @@ public class MeetingInterface {
         MeetingTime to = new MeetingTime(in.nextInt());
 
         System.out.println(csis.availableRooms);
-        System.out.println("Enter the location you want");
-        int selection = in.nextInt();
+        System.out.println("Enter the room you want");
+        Room r = csis.getRoomWithId(in.nextInt());
 
-        Meeting BLEH = new Meeting(desc , date, start, to, selection);
+        Meeting BLEH = new Meeting(desc , date, start, to, r);
 
     }
 
