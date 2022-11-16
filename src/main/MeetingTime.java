@@ -13,7 +13,8 @@ public class MeetingTime
     public int getHours() {
         return hours;
     }
-    
+
+    @Override
     public String toString() {
         return String.format("%02d:00", hours);
     }
