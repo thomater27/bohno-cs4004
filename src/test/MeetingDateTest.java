@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,22 +14,27 @@ class MeetingDateTest {
     MeetingDate futureDate = new MeetingDate(10, 8, thisYear+1);
     MeetingDate testDate;
 
+    @BeforeEach
+    void setUp() {
+        testDate = null;
+    }
+
     @Test
-    @DisplayName("Test 1: Gets day")
+    @DisplayName("Ensure getDay returns day as int")
     void getDay() {
         assertEquals(thisDay, date.getDay());
         assertEquals(10, futureDate.getDay());
     }
 
     @Test
-    @DisplayName("Test 2: Gets month value")
+    @DisplayName("Ensure getMonthValue returns month as int")
     void getMonthValue() {
         assertEquals(thisMonth, date.getMonthValue());
         assertEquals(8, futureDate.getMonthValue());
     }
 
     @Test
-    @DisplayName("Test 3: Gets month name")
+    @DisplayName("Ensure getMonthName returns month name as String")
     void getMonthName() {
         assertEquals("August", futureDate.getMonthName());
         MeetingDate temp = new MeetingDate(1, 1, thisYear+1);
@@ -38,15 +44,15 @@ class MeetingDateTest {
     }
 
     @Test
-    @DisplayName("Test 4: Gets year")
+    @DisplayName("Ensure getYear returns year as int")
     void getYear() {
         assertEquals(thisYear, date.getYear());
         assertEquals(thisYear+1, futureDate.getYear());
     }
 
     @Test
-    @DisplayName("Test 5: Ensures correctDate doesn't change valid dates")
-    void correctDate() {
+    @DisplayName("Ensures correctDate doesn't change valid dates")
+    void correctingValidDates() {
         //Testing correct date with valid dates
         testDate = new MeetingDate(30, 11, thisYear+1);
         testDate.correctDate();
@@ -60,7 +66,7 @@ class MeetingDateTest {
     }
 
     @Test
-    @DisplayName("Test 6: Checks if correctDay works across the input space")
+    @DisplayName("Checks if correctDay works across the input space")
     void correctDay() {
         //Testing out-of-bounds day values
         testDate = new MeetingDate(0, 12, thisYear + 1);
@@ -98,7 +104,7 @@ class MeetingDateTest {
     }
 
     @Test
-    @DisplayName("Test 7: Checks if correctMonth works across the input space")
+    @DisplayName("Checks if correctMonth works across the input space")
     void correctMonth() {
         //Testing out-of-bounds month values
         testDate = new MeetingDate(10, 0, thisYear + 1);
@@ -117,7 +123,7 @@ class MeetingDateTest {
     }
 
     @Test
-    @DisplayName("Test 8: Checks if isPast returns correct values for past and future dates")
+    @DisplayName("Checks if isPast returns correct values for past and future dates")
     void isPast() {
         //Testing if isPast returns correct value
         testDate = new MeetingDate(31, 12, 2021);
@@ -135,7 +141,7 @@ class MeetingDateTest {
     }
 
     @Test
-    @DisplayName("Test 9: Checks if correctDate makes past dates today")
+    @DisplayName("Checks if correctDate makes past dates today")
     void correctDatePastDates() {
         //Testing if past dates return current date
         testDate = new MeetingDate(25, 1, 2022);
@@ -150,12 +156,21 @@ class MeetingDateTest {
     }
 
     @Test
-    @DisplayName("Test 10: Checks if toString formats correctly")
+    @DisplayName("Checks if toString formats correctly")
     void toStringTest() {
         //Testing to see if toString formats correctly
         testDate = new MeetingDate(1, 9, thisYear+1);
         assertEquals(String.format("01/09/" + (thisYear+1)), testDate.toString());
         testDate = new MeetingDate(26, 12, thisYear+1);
         assertEquals(String.format("26/12/" + (thisYear+1)), testDate.toString());
+    }
+
+    @Test
+    @DisplayName("Checks if passing a String as a MeetingDate formats correctly")
+    void createDateUsingString() {
+        testDate = new MeetingDate("3020/02/29");
+        assertEquals("29/02/3020", testDate.toString());
+        testDate = new MeetingDate("3020/12/31");
+        assertEquals("31/12/3020", testDate.toString());
     }
 }
