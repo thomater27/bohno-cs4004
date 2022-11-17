@@ -106,10 +106,9 @@ class ParticipantTest {
         pete.removeMeeting("choresformammy");
         assertEquals(mA,pete.getExclusionSet());
 
-
-
-
     }
+
+
 
 
 
