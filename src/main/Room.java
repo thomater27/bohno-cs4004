@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Room {
     private final int id;
     private int capacity;
@@ -10,11 +9,16 @@ public class Room {
     public Room(int id, int seats) {
         this.id = id;
         this.capacity = seats;
-
     }
 
     public void setCapacity(int capacity) {
-        this.capacity = capacity;
+        if (capacity >= 0) {
+            this.capacity = capacity;
+        }
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     public void addResource(String r) {
@@ -22,6 +26,7 @@ public class Room {
     }
 
     public void removeResource(String r) {
+        r = r.toLowerCase();
         resources.remove(r);
     }
 
@@ -30,12 +35,24 @@ public class Room {
         return resources.contains(r);
     }
 
+    public ArrayList<String> getResources() {
+        return resources;
+    }
+
+    public void clearResources() {
+        resources.clear();
+    }
+
     public void addMeeting(Meeting m) {
         meetings.add(m);
     }
 
     public boolean removeMeeting(Meeting m) {
         return meetings.remove(m);
+    }
+
+    public void clearMeetings() {
+        meetings.clear();
     }
 
     public boolean isAvailableAtTime(MeetingDate date, MeetingTime start, MeetingTime end) {
@@ -47,10 +64,6 @@ public class Room {
         }
         return true;
     }
-
-
-
-
 
     @Override
     public String toString() {
@@ -64,6 +77,7 @@ public class Room {
     public int getId() {
         return id;
     }
+
 /*
     public boolean checkIfRoomsFree() {
         boolean status = false;

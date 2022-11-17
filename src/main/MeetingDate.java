@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class MeetingDate {
     private int day;
