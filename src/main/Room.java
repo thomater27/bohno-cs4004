@@ -10,6 +10,7 @@ public class Room {
     public Room(int id, int seats) {
         this.id = id;
         this.capacity = seats;
+
     }
 
     public void setCapacity(int capacity) {
@@ -45,6 +46,10 @@ public class Room {
             }
         }
         return true;
+    }
+
+    public boolean isAvailableAtDay(MeetingDate date){
+
     }
 
     @Override
