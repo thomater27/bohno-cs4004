@@ -27,9 +27,7 @@ class BuildingTest {
                 exclude4.add(r);
             }
         }
-
-        csis.getAvailableRoomAtTime(new MeetingDate("2022/12/12"),new MeetingTime( 2),new MeetingTime(4));
-        assertEquals(exclude4 ,  csis.getA);
+        assertEquals(exclude4 ,  csis.getAvailableRoomAtTime(new MeetingDate("2022/12/12"),new MeetingTime( 2),new MeetingTime(4)));
     }
 
 }

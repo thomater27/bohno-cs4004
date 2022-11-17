@@ -48,9 +48,9 @@ public class Room {
         return true;
     }
 
-    public boolean isAvailableAtDay(MeetingDate date){
 
-    }
+
+
 
     @Override
     public String toString() {
