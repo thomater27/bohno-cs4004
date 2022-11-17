@@ -40,12 +40,6 @@ public class Building {
         return available;
     }
 
-    public ArrayList<Room> getAvailableRoomOnDay(MeetingDate date){
-        ArrayList<Room> available = new ArrayList<>();
-        for(Room r : allRooms){
-            if (r.isAvailableAtTime())
-        }
-    }
 
 
 }
