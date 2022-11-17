@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class Participant {
     private ArrayList<Participant> allP = new ArrayList<>();
     private ArrayList<Meeting> exclusionSet = new ArrayList<>();
+
+    Building csis = new Building(20,4);
+
     private final String name;
     private final String password;
     private boolean privileged = false;

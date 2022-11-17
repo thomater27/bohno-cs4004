@@ -15,7 +15,6 @@ class BuildingTest {
     @Test
     @Description("Find out how many rooms in the building are available at a certain time")
     public void getAvailableRoomAtTime(){
-        Building csis = new Building(8,3);
         MeetingDate day = new MeetingDate("2022/12/12");
         MeetingTime from = new MeetingTime(2);
         MeetingTime to = new MeetingTime(4);
@@ -34,10 +33,11 @@ class BuildingTest {
     @Test
     @Description("Testing if i can get a room from its ID")
     public void getRoomWithId(){
-        ArrayList<Room> rooms = new ArrayList<>();
+        ArrayList<Room> boop = new ArrayList<>();
+        Room base = new Room(23,20);
+        boop.add(base);
         //populate the arraylist
-        rooms.add()
-        assertEquals();
+        assertEquals(boop.get(23),csis.getRoomWithId(23));
     }
 
 
