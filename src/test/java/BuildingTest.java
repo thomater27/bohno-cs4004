@@ -33,13 +33,14 @@ class BuildingTest {
     @Test
     @Description("Testing if i can get a room from its ID")
     public void getRoomWithId(){
-        ArrayList<Room> boop = new ArrayList<>();
-        Room base = new Room(23,20);
-        boop.add(base);
-        //populate the arraylist
-        assertEquals(boop.get(23),csis.getRoomWithId(23));
+        Room r = new Room(50, 50);
+        csis.addRoom(r);
+        assertEquals(r ,csis.getRoomWithId(50));
     }
 
-
-
+    @Test
+    @Description("Testing if getRoomWithId returns null if a room isn't found")
+    public void getRoomWithIdNullTest(){
+        assertNull(csis.getRoomWithId(40));
+    }
 }

@@ -173,4 +173,11 @@ class MeetingDateTest {
         testDate = new MeetingDate("3020/12/31");
         assertEquals("31/12/3020", testDate.toString());
     }
+
+    @Test
+    @DisplayName("Ensures equals method works for null objects and other classes")
+    void equalsTest() {
+        assertNotEquals(null, date);
+        assertNotEquals(date, now);
+    }
 }

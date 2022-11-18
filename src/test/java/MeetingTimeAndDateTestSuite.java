@@ -4,7 +4,6 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectPackages("test")
-@SelectClasses({MeetingTime.class, MeetingDate.class})
-class MeetingTimeAndDateTestSuite {
-
+@SelectClasses({MeetingTimeTest.class, MeetingDateTest.class})
+public class MeetingTimeAndDateTestSuite {
 }

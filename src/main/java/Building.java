@@ -40,6 +40,7 @@ public class Building {
         return available;
     }
 
-
-
+    public void addRoom(Room r) {
+        allRooms.add(r);
+    }
 }

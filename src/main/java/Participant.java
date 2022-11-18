@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 
 public class Participant {
-    private ArrayList<Participant> allP = new ArrayList<>();
     private ArrayList<Meeting> exclusionSet = new ArrayList<>();
-
 
     private final String name;
     private final String password;
@@ -17,10 +15,6 @@ public class Participant {
     public Participant(String name, String password, boolean privileged) {
         this(name, password);
         this.privileged = privileged;
-    }
-
-    public ArrayList<Participant> getAllP() {
-        return allP;
     }
 
     public ArrayList<Meeting> getExclusionSet() {

@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParticipantTest {
     Building csis = new Building(20,4);
@@ -103,15 +103,16 @@ class ParticipantTest {
         ArrayList<Meeting> mA =new ArrayList<>();
 
 
-        pete.removeMeeting("choresformammy");
+        assertTrue(pete.removeMeeting("choresformammy"));
         assertEquals(mA,pete.getExclusionSet());
 
     }
 
-
-
-
-
+    @Test
+    @Description("Checking does remove meeting return null")
+    void removeNullMeeting() {
+        assertFalse(pete.removeMeeting("fakemeeting"));
+    }
 
 
 
