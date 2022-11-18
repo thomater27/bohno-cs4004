@@ -77,39 +77,4 @@ public class Room {
     public int getId() {
         return id;
     }
-
-/*
-    public boolean checkIfRoomsFree() {
-        boolean status = false;
-        return this.occupied;
-    }
-
-    public boolean checkIfRoomHasMoreThan10Seats() {
-        boolean status = false;
-        return status;
-    }
-
-    public ArrayList roomRequirements(){
-        resources.add("Projector");
-        resources.add("WhiteBoard");
-        resources.add("WiFi");
-        resources.add("Refreshments");
-        return resources;
-    }
-
-    public ArrayList wheelchairAccessibleRoomRequirements(){
-        wheelchairAccessibleRoomRequirements().add("stairs");
-        return null;
-    }
-    public boolean wheelchairAccessible(){
-        if (Room contains
-
-        return true;
-    }
-
-
-    public boolean String.contains(CharSequence s){
-        return ok;
-    }
-*/
 }
