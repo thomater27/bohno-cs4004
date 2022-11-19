@@ -11,8 +11,6 @@ class RoomTest {
     @BeforeEach
     void setUp() {
         r = new Room(1, 30);
-        r.clearResources();
-        r.clearMeetings();
     }
 
     @Test
@@ -28,6 +26,8 @@ class RoomTest {
         assertEquals(40, r.getCapacity());
         r.setCapacity(-10); //value less than 0
         assertEquals(40, r.getCapacity());
+        r.setCapacity(0);
+        assertEquals(0, r.getCapacity());
     }
 
     @Test
@@ -46,10 +46,13 @@ class RoomTest {
     @DisplayName("Ensures that removeResource removes a resource ignoring case")
     void removeResource() {
         assertEquals(0, r.getResources().size());
+        assertFalse(r.hasResource("projector"));
         r.addResource("projector");
         assertEquals(1, r.getResources().size());
+        assertTrue(r.hasResource("projector"));
         r.removeResource("PROJECTOR");
         assertEquals(0, r.getResources().size());
+        assertFalse(r.hasResource("projector"));
     }
 
     @Test
@@ -66,6 +69,7 @@ class RoomTest {
     void hasResource() {
         r.addResource("Computer");
         assertTrue(r.hasResource("cOmPuTeR"));
+        assertFalse(r.hasResource("pc"));
     }
 
     @Test
@@ -74,6 +78,7 @@ class RoomTest {
         Meeting m = new Meeting(null, null, null, null, r);
         r.addMeeting(m);
         assertTrue(r.removeMeeting(m));
+        assertFalse(r.removeMeeting(m));
     }
 
     @Test

@@ -51,10 +51,6 @@ public class Room {
         return meetings.remove(m);
     }
 
-    public void clearMeetings() {
-        meetings.clear();
-    }
-
     public boolean isAvailableAtTime(MeetingDate date, MeetingTime start, MeetingTime end) {
         Meeting meeting = new Meeting("sample", date, start, end, this);
         for (Meeting m : meetings) {

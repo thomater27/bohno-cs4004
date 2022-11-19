@@ -81,13 +81,6 @@ class MeetingDateTest {
         testDate = new MeetingDate(29, 2, 3171);
         testDate.correctDay();
         assertEquals(28, testDate.getDay());
-        //Testing leap year exceptional circumstance
-        testDate = new MeetingDate(29, 2, thisYear + 4 - thisYear % 4);
-        testDate.correctDay();
-        assertEquals(29, testDate.getDay());
-        testDate = new MeetingDate(30, 2, thisYear + 4 - thisYear % 4);
-        testDate.correctDay();
-        assertEquals(29, testDate.getDay());
         //Testing in bound values
         testDate = new MeetingDate(1, 12, thisYear + 1);
         testDate.correctDay();
@@ -101,6 +94,18 @@ class MeetingDateTest {
         testDate = new MeetingDate(28, 2, thisYear + 1);
         testDate.correctDay();
         assertEquals(28, testDate.getDay());
+    }
+
+    @Test
+    @DisplayName("Leap year tests")
+    void correctDayLeapYear() {
+        //Testing leap year exceptional circumstance
+        testDate = new MeetingDate(29, 2, thisYear + 4 - thisYear % 4);
+        testDate.correctDay();
+        assertEquals(29, testDate.getDay());
+        testDate = new MeetingDate(30, 2, thisYear + 4 - thisYear % 4);
+        testDate.correctDay();
+        assertEquals(29, testDate.getDay());
     }
 
     @Test
@@ -126,11 +131,11 @@ class MeetingDateTest {
     @DisplayName("Checks if isPast returns correct values for past and future dates")
     void isPast() {
         //Testing if isPast returns correct value
-        testDate = new MeetingDate(31, 12, 2021);
+        testDate = new MeetingDate(thisDay, thisMonth, thisYear-1);
         assertTrue(testDate.isPast());
-        testDate = new MeetingDate(31, 10, 2022);
+        testDate = new MeetingDate(thisDay, thisMonth-1, thisYear);
         assertTrue(testDate.isPast());
-        testDate = new MeetingDate(1, 11, 2022);
+        testDate = new MeetingDate(thisDay-1, thisMonth, thisYear);
         assertTrue(testDate.isPast());
         testDate = new MeetingDate(31, 12, thisYear);
         assertFalse(testDate.isPast());
@@ -138,6 +143,7 @@ class MeetingDateTest {
         assertFalse(testDate.isPast());
         testDate = new MeetingDate(31, 1, thisYear+1);
         assertFalse(testDate.isPast());
+        assertFalse(date.isPast());
     }
 
     @Test
