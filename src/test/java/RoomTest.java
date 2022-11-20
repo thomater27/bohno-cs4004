@@ -82,8 +82,23 @@ class RoomTest {
     }
 
     @Test
-    @DisplayName("todo")
+    @DisplayName("Ensures that rooms store their availability correctly")
     void isAvailableAtTime() {
+        MeetingDate testDate = new MeetingDate(1, 1, 3022);
+        MeetingDate otherDate = new MeetingDate(2, 1, 3022);
+        MeetingTime t1 = new MeetingTime(15);
+        MeetingTime t2 = new MeetingTime(18);
+        MeetingTime t3 = new MeetingTime(16);
+        MeetingTime t4 = new MeetingTime(17);
+        Meeting m1 = new Meeting(null, testDate, t1, t2, r);
+        assertTrue(r.isAvailableAtTime(testDate, t1, t2));
+        r.addMeeting(m1);
+        assertFalse(r.isAvailableAtTime(testDate, t1, t2));
+        assertFalse(r.isAvailableAtTime(testDate, t3, t4));
+        assertTrue(r.isAvailableAtTime(otherDate, t1, t2));
+        r.removeMeeting(m1);
+        assertTrue(r.isAvailableAtTime(testDate, t1, t2));
+        assertTrue(r.isAvailableAtTime(testDate, t3, t4));
     }
 
     @Test
