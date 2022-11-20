@@ -56,7 +56,7 @@ public class MeetingInterface {
         boolean running = true;
         while (running) {
             if (p.isPrivileged()) {
-                System.out.println("C)reate meeting, D)elete meeting, R)emove meeting, V)iew meetings, M)anage rooms, L)og out");
+                System.out.println("C)reate meeting, R)emove meeting, V)iew meetings, L)og out");
                 String input = in.next().toLowerCase();
                 if (input.equals("c") || input.equals("d") || input.equals("r") || input.equals("v") || input.equals("m") || input.equals("l")) {
                     running = userRun(input, p);
@@ -77,20 +77,12 @@ public class MeetingInterface {
                 createMeeting(p);
                 return true;
 
-            case "d":
-
-                return true;
-
             case "r":
                 removeMeeting(p);
                 return true;
 
             case "v":
                 viewMeetings(p);
-                return true;
-
-            case "m":
-
                 return true;
 
             case "l":
