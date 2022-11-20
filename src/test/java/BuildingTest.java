@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BuildingTest {
+
+
     Building csis = new Building(8,3);
 
-    ArrayList<Room> available = csis.getAllRooms();
+    //ArrayList<Room> available = csis.getAllRooms();
 
 
 
@@ -33,10 +35,17 @@ class BuildingTest {
     @Test
     @Description("Testing if i can get a room from its ID")
     public void getRoomWithId(){
-        Room r = new Room(50, 50);
-        csis.addRoom(r);
-        assertEquals(r ,csis.getRoomWithId(50));
+        Room newRoom = new Room(50, 50);
+        csis.addRoom(newRoom);
+        assertEquals(newRoom, csis.getRoomWithId(50));
     }
+
+    @Test
+    @Description("Testing if it returns null")
+    public void getRoomWithIdNull(){
+        assertNull( csis.getRoomWithId(40));
+    }
+
 
     @Test
     @Description("Testing if getRoomWithId returns null if a room isn't found")

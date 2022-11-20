@@ -45,8 +45,8 @@ public class Participant {
         int size = exclusionSet.size();
         for (int i = 0; i < size; i++) {
             if (exclusionSet.get(i).getDescription().equalsIgnoreCase(name)) {
-                 exclusionSet.remove(i);
-                 return true;
+                exclusionSet.remove(i);
+                return true;
             }
         }
         return false;

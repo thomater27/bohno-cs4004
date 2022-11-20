@@ -10,7 +10,7 @@ class ParticipantTest {
     Participant pete = new Participant( "pete" ,"1223", true);
     @Test
     @Description("Making sure exceptionSet takes a meeting when pete.adds a meeting and that add meeting works")
-    void checkExceptionTakesMeeting() {
+    void checkExclusionSetTakesMeeting() {
         MeetingDate day = new MeetingDate("2022/12/12");
         MeetingTime from = new MeetingTime(2);
         MeetingTime to = new MeetingTime(4);
@@ -26,9 +26,27 @@ class ParticipantTest {
     }
 
     @Test
-    void getExclusionSet() {
+    @Description("Can exceptionSet take more then one meeting ")
+    void checkMoreThenOneMeetingInExceptionSet(){
+        MeetingDate day = new MeetingDate("2022/12/12");
+        MeetingTime from = new MeetingTime(2);
+        MeetingTime to = new MeetingTime(4);
+        Meeting m = new Meeting("choresformammy", day, from,to,csis.getRoomWithId(4));
+        MeetingDate day2 = new MeetingDate("2022/12/12");
+        MeetingTime from2 = new MeetingTime(2);
+        MeetingTime to2 = new MeetingTime(4);
+        Meeting m2 = new Meeting("cleaningoutthecar", day2, from2,to2,csis.getRoomWithId(5));
+        pete.addMeeting(m2);
+        pete.addMeeting(m);
+
+        ArrayList<Meeting> mA=new ArrayList<>();
+        mA.add(m2);
+        mA.add(m);
+
+        assertEquals(mA,pete.getExclusionSet());
 
     }
+
 
     @Test
     void getName() {
@@ -38,58 +56,58 @@ class ParticipantTest {
 
     @Test
     void getPassword() {
-        Participant dopey = new Participant("dopey","123");
-        assertEquals("123",dopey.getPassword());
+        Participant bob = new Participant("bob","123");
+        assertEquals("123",bob.getPassword());
     }
 
     @Test
     @Description("make sure login works HAPPY PATH")
-    void checkLogin(){
-        Participant boob = new Participant("boob","123A");
-        assertEquals(true,boob.checkLogin("boob","123A"));
+    void loginSuccesful(){
+        Participant bob = new Participant("bob","123A");
+        assertTrue(bob.checkLogin("bob","123A"));
     }
 
     @Test
     @Description("wrong name NOT happy path grrr")
     void wrongNameOnLogin(){
-        Participant boob = new Participant("boob","123A");
-        assertEquals(false,boob.checkLogin("penelope","123A"));
+        Participant bob = new Participant("bob","123A");
+        assertFalse(bob.checkLogin("penelope","123A"));
     }
 
     @Test
     @Description("wrong password right name")
     void wrongPwordOnLogin(){
-        Participant boob = new Participant("boob","123A");
-        assertEquals(false,boob.checkLogin("boob","7890"));
+        Participant bob = new Participant("bob","123A");
+        assertFalse(bob.checkLogin("bob","7890"));
     }
 
     @Test
     @Description("nothing right")
-    void bad(){
-        Participant boob = new Participant("boob","123A");
-        assertEquals(false,boob.checkLogin("thomas","handsome"));
+    void nameAndPwordWrong(){
+        Participant bob = new Participant("bob","123A");
+        assertFalse(bob.checkLogin("thomas","handsome"));
     }
 
     @Test
     @Description("Making sure privileged boolean works")
     void privileged(){
         Participant gleb = new Participant("gleb", "123",true);
-        assertEquals(true,gleb.isPrivileged());
+        assertTrue(gleb.isPrivileged());
 
     }
 
     @Test
-    @Description("Isnt priviliged")
-    void  otherConstructor(){
+    @Description("Isnt priviliged sad because unhappy path")
+    void  notPriviliged(){
         Participant sad = new Participant("sad","123");
-        assertEquals(false,sad.isPrivileged());
+        assertFalse(sad.isPrivileged());
     }
 
     @Test
     @Description("Isnt priviliged")
-    void  Constructor(){
+    void  otherConstructorForNotPrivileged(){
         Participant sad = new Participant("sad","123",false);
-        assertEquals(false,sad.isPrivileged());
+        assertFalse(sad.isPrivileged());
     }
 
     @Test
@@ -105,6 +123,14 @@ class ParticipantTest {
 
         assertTrue(pete.removeMeeting("choresformammy"));
         assertEquals(mA,pete.getExclusionSet());
+
+
+    }
+
+    @Test
+    @Description("Making sure it returns false when trying to remove a meeting that doesnt exist")
+    public void removeNonExistingMeeting(){
+        assertFalse(pete.removeMeeting("meetingthatdoesntexist"));
 
     }
 
